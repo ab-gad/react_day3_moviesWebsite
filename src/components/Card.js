@@ -24,7 +24,7 @@ function Card(props) {
                     <p className="card-text small">{finalGenra.join(", ")}</p>
                     <p>Release date: {release_date}</p>
                     <p> Rating:  {vote_average} <small>({vote_count})</small></p>
-                    <Link className="btn btn-outline-dark" to={`./movie/${id}`}>More</Link>
+                    <Link className="btn btn-outline-dark" to={`/movie/${id}`}>More</Link>
                 </div>
             </div>
         </div>

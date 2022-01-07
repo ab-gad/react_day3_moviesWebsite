@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AccordionItem from "../components/AccordionItem";
 
 function Home() {
     const [moviesPopular, setMoviesPopular] = useState([])
     const [moviesGenre, setMoviesGenre] = useState([])
+    const [moviesTrend, setMoviesTrend] = useState([])
 
     function getPopularMovies(){
         axios.get('https://api.themoviedb.org/3/movie/popular?api_key=1c61f7854caf371b34a23ef611f0efed')
@@ -13,6 +15,15 @@ function Home() {
                 console.log("RESULT",result)
                 setMoviesPopular(result.results)
                 //console.log("state",moviesPopular)        
+            })
+    }
+
+    function getTrendMovies(){
+        axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=1c61f7854caf371b34a23ef611f0efed')
+            .then(res=>res.data)
+            .then(result=>{
+                console.log("TREND",result)
+                setMoviesTrend(result.results)      
             })
     }
 
@@ -40,15 +51,15 @@ function Home() {
         getPopularMovies();
         getConfigurations();
         getMoviesGenre();
+        getTrendMovies()
     },[])
 
-    console.log("state",moviesPopular, moviesGenre)
 
     return (
       <>
-        <div className="accordion" id="accordionExample">
+        <div className="accordion pb-5" id="accordionExample">
             <AccordionItem
-                popularMovies = {moviesPopular} 
+                movies = {moviesPopular} 
                 moviesGenre = {moviesGenre}
                 title="Most Popular Movies"
                 hid = "headingOne"
@@ -60,7 +71,12 @@ function Home() {
                 divView="show" // for the 1st only
                 ariaLabelledby="headingOne"
             />
-            {/* {<AccordionItem 
+           <div className="mb-4 text-center">
+               <Link className="btn btn-outline-primary" to="/movies/popular/1">More Popular Movies</Link>
+           </div>
+            <AccordionItem 
+                movies = {moviesTrend} 
+                moviesGenre = {moviesGenre}
                 title="Trending Movies"
                 hId = "headingTwo"
                 btnView = "collapsed" //or nothing for the first
@@ -70,7 +86,7 @@ function Home() {
                 divId="collapseTwo"
                 divView="" // for the 1st only
                 ariaLabelledby="headingTwo"
-            />} */}
+            />
         </div>
       </>
     );

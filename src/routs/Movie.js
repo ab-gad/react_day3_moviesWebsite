@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import MovieDetails from "../components/MovieDetails";
 
 function Movie(props) {
     const[movie, setMovie] = useState({})
@@ -29,7 +30,7 @@ function Movie(props) {
                 </h1>
             </div>
         </header>
-        
+        <MovieDetails movie={movie}/>       
       </>
     );
   }

@@ -3,7 +3,7 @@ import Card from "./Card";
 function AccordionItem (props) {
     const{ 
         moviesGenre,
-        popularMovies,
+        movies,
         title,
         hId, 
         btnView, 
@@ -15,7 +15,6 @@ function AccordionItem (props) {
         ariaLabelledby
     }=props
 
-    console.log("from Accordion",popularMovies,moviesGenre)
     return (
         <>
              <div className="accordion-item">
@@ -40,7 +39,7 @@ function AccordionItem (props) {
 
                     <div className="accordion-body">
                         <div className="row row-cols-1 row-cols-md-5 g-4">
-                            {popularMovies.map((movie) => {
+                            {movies.map((movie) => {
 
                                 //getting names of movies ganra from the other arr 'moviesGenre' 
                                 const finalGenra = []
@@ -59,6 +58,7 @@ function AccordionItem (props) {
                             })}
                         </div>
                     </div>
+                    
                 </div>
             </div>
            
