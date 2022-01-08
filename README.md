@@ -6,11 +6,11 @@ You can definitely search for any movie you want and can also add (or remove) mo
 
 ## Pages
 
-Home ---> Where you can see the most popular and trending movies within really nice 2 occordions instead of normal sections
-Pagination --> In case you wanna more movies you can just click on "more" button and start travelling through hundreds of pages 
-Favourites --> Where your favurite movies live after after click "add to favourites" and where you can delete a movie or reset all of them at once
-Movie --> A detailed page of a specific movie
-Search --> Where you can search for any movie you want and get instant feedback on your query before you click on search buttons or press Enter
+Home ---> Where you can see the most popular and trending movies within really nice 2 occordions instead of normal sections.
+Pagination --> In case you wanna more movies you can just click on "more" button and start travelling through hundreds of pages. 
+Favourites --> Where your favurite movies live after after click "add to favourites" and where you can delete a movie or reset all of them at once.
+Movie --> A detailed page of a specific movie.
+Search --> Where you can search for any movie you want and get instant feedback on your query before you click on search buttons or press Enter.
 
 ## Tools
 
