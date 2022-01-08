@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AccordionItem from "../components/AccordionItem";
+import Header from "../components/Header";
 
 function Home() {
     const [moviesPopular, setMoviesPopular] = useState([])
@@ -57,8 +58,11 @@ function Home() {
 
     return (
       <>
+        <Header title = "Movies World" />
         <div className="accordion pb-5" id="accordionExample">
             <AccordionItem
+                favEdit="add"
+                fromFav={false}
                 movies = {moviesPopular} 
                 moviesGenre = {moviesGenre}
                 title="Most Popular Movies"
@@ -74,7 +78,9 @@ function Home() {
            <div className="mb-4 text-center">
                <Link className="btn btn-outline-primary" to="/movies/popular/1">More Popular Movies</Link>
            </div>
-            <AccordionItem 
+            <AccordionItem
+                favEdit="add" 
+                fromFav={false}
                 movies = {moviesTrend} 
                 moviesGenre = {moviesGenre}
                 title="Trending Movies"

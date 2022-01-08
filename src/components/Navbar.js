@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import LoginRegister from "./LoginRegister";
+import FavNum from "./FavNum";
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">MOVIES WORLD</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,6 +18,10 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/search">Search</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/favourites">Favourites</Link>
+                        </li>
+                        <FavNum />
                     </ul>
                     <LoginRegister />
                 </div>

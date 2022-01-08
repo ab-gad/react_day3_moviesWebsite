@@ -5,9 +5,9 @@ import AccordionItem from "../components/AccordionItem";
 
 function PaginationPage (props) {
     
-    const {catigory, pageNum} = props.match.params
+    const {catigory} = props.match.params
 
-    const [page, setPage]= useState(pageNum);
+    const [page, setPage]= useState(1);
     const [movies, setMovies] =useState([])
 
     function getMovies(){
@@ -29,6 +29,8 @@ function PaginationPage (props) {
         <>
             <div className="accordion" id="accordionExample">
                 <AccordionItem
+                    favEdit="add"
+                    fromFav={false}
                     movies = {movies} 
                     moviesGenre = {[]}
                     title="Most Popular Movies"

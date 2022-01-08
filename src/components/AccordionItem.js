@@ -1,7 +1,9 @@
 import Card from "./Card";
 
 function AccordionItem (props) {
-    const{ 
+    const{
+        favEdit,
+        fromFav, 
         moviesGenre,
         movies,
         title,
@@ -42,14 +44,20 @@ function AccordionItem (props) {
                             {movies.map((movie) => {
 
                                 //getting names of movies ganra from the other arr 'moviesGenre' 
-                                const finalGenra = []
-                                movie.genre_ids.forEach((gid)=>{
+                                let finalGenra = []
+                                if(fromFav){
+                                    finalGenra = movie.genres.map(g=>g.name)
+                                }else{
+                                    movie.genre_ids.forEach((gid)=>{
                                     moviesGenre.forEach(genra => {
                                         (genra.id === gid) && finalGenra.push(genra.name)  
                                     });
                                 })
+                                }
+                                
                                 return (
                                     <Card  
+                                        favEdit={favEdit}
                                         key={movie.id} 
                                         movie={movie}
                                         finalGenra={finalGenra}

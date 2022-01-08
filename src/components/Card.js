@@ -1,9 +1,10 @@
 import "../css/card.css"
 import { Link } from "react-router-dom";
+import AddToFav from "./AddToFav";
 
 function Card(props) {
 
-    const {movie, finalGenra} = props
+    const {movie, finalGenra, favEdit} = props
     const {id, poster_path, title, vote_average, vote_count, release_date} = movie
 
     /**
@@ -25,6 +26,7 @@ function Card(props) {
                     <p>Release date: {release_date}</p>
                     <p> Rating:  {vote_average} <small>({vote_count})</small></p>
                     <Link className="btn btn-outline-dark" to={`/movie/${id}`}>More</Link>
+                    <AddToFav id={id} type={favEdit}/>
                 </div>
             </div>
         </div>

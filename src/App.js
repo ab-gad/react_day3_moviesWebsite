@@ -7,6 +7,7 @@ import Register from './routs/Register';
 import Navbar from './components/Navbar';
 import Search from './routs/Search';
 import PaginationPage from './routs/PaginationPage';
+import Favourites from './routs/Favourites';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/movie/:id" component={Movie} exact />
             <Route path="/search" component={Search} exact/>
             <Route path="/movies/:catigory/:pageNum" component={PaginationPage} exact/>
+            <Route path="/favourites" component={Favourites} exact />
         </Switch>
       </Router> 
     </>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AccordionItem from "../components/AccordionItem";
 import SearchInput from "../components/SearchInput"
+import Header from "../components/Header";
 
 function Search () {
     const[query, setQuery]=useState("")
@@ -23,9 +24,12 @@ function Search () {
     },[query])
 
     return (
-        <>         
+        <>  
             <SearchInput setQuery={setQuery}/>
+            <Header title="Search the best"/>       
             <AccordionItem
+                favEdit="add"
+                fromFav={false}
                 movies = {searchResult} 
                 moviesGenre = {[]}
                 title="Search Results"
