@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import axios from "axios";
 import AccordionItem from "../components/AccordionItem";
+import { useSelector } from "react-redux";
 
 function PaginationPage (props) {
     
     const {catigory} = props.match.params
-
+    const moviesGenre   = useSelector((state)=> state.movies.genre)
     const [page, setPage]= useState(1);
     const [movies, setMovies] =useState([])
 
@@ -32,7 +33,7 @@ function PaginationPage (props) {
                     favEdit="add"
                     fromFav={false}
                     movies = {movies} 
-                    moviesGenre = {[]}
+                    moviesGenre = {moviesGenre}
                     title="Most Popular Movies"
                     hid = "headingOne"
                     btnView = "" 

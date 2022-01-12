@@ -2,6 +2,8 @@
  * _______________________________________APP INITIAL STATE
  */
 
+import { getTrend } from "./action"
+
 const INITIAL_LANG = {
     lang:"EN"
 }
@@ -10,6 +12,11 @@ const INITIAL_FAV = {
     fav: []
 }
 
+const INITIAL_MOVIES = {
+    popular : [],
+    trend   : [],
+    genre   : []
+}
 /**
  * ________________________________________FAV REDUCER
  */
@@ -54,3 +61,29 @@ export const setLangReducer = (state = INITIAL_LANG, action) => {
             return state;
     }
 }
+
+/**
+ * _______________ GET MOVIES REDUCER _ FOR DAY TASK
+ */
+
+export const setMoviesReducer = (state=INITIAL_MOVIES , action) => {
+    switch (action.type) {
+        case "GET_POPULAR":
+            return {
+                ...state,
+                popular: action.payload
+            }
+        case "GET_TREND" :
+            return {
+                ...state,
+                trend: action.payload
+            }
+        case 'GET_GENRE' : 
+            return {
+                ...state,
+                genre: action.payload
+            }
+        default:
+            return state;
+    }
+} 

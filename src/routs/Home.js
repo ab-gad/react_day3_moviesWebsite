@@ -1,58 +1,39 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AccordionItem from "../components/AccordionItem";
 import Header from "../components/Header";
+import { useDispatch } from "react-redux";
+import { getPopular } from "../redux/action";
+import { getTrend } from "../redux/action";
+import { getGenre } from "../redux/action";
 
 function Home() {
-    const [moviesPopular, setMoviesPopular] = useState([])
-    const [moviesGenre, setMoviesGenre] = useState([])
-    const [moviesTrend, setMoviesTrend] = useState([])
+    //const [moviesGenre, setMoviesGenre] = useState([])
 
-    function getPopularMovies(){
-        axios.get('https://api.themoviedb.org/3/movie/popular?api_key=1c61f7854caf371b34a23ef611f0efed')
-            .then(res=>res.data)
-            .then(result=>{
-                console.log("RESULT",result)
-                setMoviesPopular(result.results)
-                //console.log("state",moviesPopular)        
-            })
-    }
+    const moviesPopular = useSelector((state)=>state.movies.popular)
+    const moviesTrend   = useSelector((state)=> state.movies.trend)
+    const moviesGenre   = useSelector((state)=> state.movies.genre)
 
-    function getTrendMovies(){
-        axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=1c61f7854caf371b34a23ef611f0efed')
-            .then(res=>res.data)
-            .then(result=>{
-                console.log("TREND",result)
-                setMoviesTrend(result.results)      
-            })
-    }
+    const dispatch = useDispatch()
 
-    function getConfigurations(){
-        axios.get('https://api.themoviedb.org/3/configuration?api_key=1c61f7854caf371b34a23ef611f0efed')
-            .then(res=>res.data)
-            .then(result=>{
-                console.log("CONF.",result)
-                //console.log("state",moviesPopular)        
-            })
-    }
-
-    function getMoviesGenre(){
-        axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=1c61f7854caf371b34a23ef611f0efed')
-            .then(res=>res.data)
-            .then(result=>{
-                console.log("Genre.",result.genres)
-                setMoviesGenre(result.genres)  
-            })
-    }
-
-    
+    // function getConfigurations(){
+    //     axios.get('https://api.themoviedb.org/3/configuration?api_key=1c61f7854caf371b34a23ef611f0efed')
+    //         .then(res=>res.data)
+    //         .then(result=>{
+    //             //console.log("CONF.",result)
+    //             //console.log("state",moviesPopular)        
+    //         })
+    // }
     //like ComponentDidMount
+
     useEffect(()=>{
-        getPopularMovies();
-        getConfigurations();
-        getMoviesGenre();
-        getTrendMovies()
+        //getConfigurations();
+        //getMoviesGenre();
+        dispatch(getPopular());
+        dispatch(getTrend());
+        dispatch(getGenre())
+
     },[])
 
 

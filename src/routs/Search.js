@@ -3,10 +3,13 @@ import axios from "axios";
 import AccordionItem from "../components/AccordionItem";
 import SearchInput from "../components/SearchInput"
 import Header from "../components/Header";
+import { useSelector } from "react-redux";
 
 function Search () {
     const[query, setQuery]=useState("")
     const[searchResult, setSearchResult]= useState([])
+
+    const moviesGenre   = useSelector((state)=> state.movies.genre)
 
     function getResults(){
         const encodedQuery = encodeURI(query)
@@ -31,7 +34,7 @@ function Search () {
                 favEdit="add"
                 fromFav={false}
                 movies = {searchResult} 
-                moviesGenre = {[]}
+                moviesGenre = {moviesGenre}
                 title="Search Results"
                 hid = "headingOne"
                 btnView = "" 
