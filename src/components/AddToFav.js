@@ -4,7 +4,7 @@ import { resetFav, rmFav, addFav } from "../redux/action";
 function AddToFav (props){
     const {id, type} = props
 
-    const fav = useSelector((state)=> state.fav)
+    const fav = useSelector((state)=> state.fav.fav)
 
     console.log ("FROM FAV", fav)
 

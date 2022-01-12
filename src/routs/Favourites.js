@@ -7,7 +7,7 @@ import AddToFav from "../components/AddToFav";
 
 function Favourites() {
     
-    const fav = useSelector((state)=> state.fav)
+    const fav = useSelector((state)=> state.fav.fav)
     console.log("fav", fav)
 
     const [movies, setMovies] = useState([])

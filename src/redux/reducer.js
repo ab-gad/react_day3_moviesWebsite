@@ -1,9 +1,19 @@
-const INITIAL_STATE = {
-    fav: [],
-    wishList: [],
+/**
+ * _______________________________________APP INITIAL STATE
+ */
+
+const INITIAL_LANG = {
+    lang:"EN"
 }
 
-export const setFavReducer = (state = INITIAL_STATE, action) => {
+const INITIAL_FAV = {
+    fav: []
+}
+
+/**
+ * ________________________________________FAV REDUCER
+ */
+export const setFavReducer = (state = INITIAL_FAV, action) => {
     switch (action.type) {
         case "RESET_FAV":
             return {
@@ -24,3 +34,23 @@ export const setFavReducer = (state = INITIAL_STATE, action) => {
             return state;
     }
 } 
+
+/**
+ * ______________________________LANG REDUCER
+ */
+
+export const setLangReducer = (state = INITIAL_LANG, action) => {
+    switch (action.type) {
+        case "AR":
+            return {
+                lang:"AR"
+            }
+        case "EN":
+            return {
+                lang:"EN"
+            }
+            
+        default:
+            return state;
+    }
+}

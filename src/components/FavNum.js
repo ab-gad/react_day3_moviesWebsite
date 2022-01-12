@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 function FavNum() {
     
-    const fav = useSelector((state)=> state.fav)
+    const fav = useSelector((state)=> state.fav.fav)
     const num = fav.length
 
     return (

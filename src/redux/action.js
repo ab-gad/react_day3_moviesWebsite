@@ -19,3 +19,19 @@ export const rmFav = (payload) => {
         payload
     }
 }
+
+/**
+ * ________________________ LANG________________________
+ */
+
+export const arabic = () => {
+    return {
+        type: "AR"
+    }
+}
+
+export const english = () => {
+    return {
+        type: "EN"
+    }
+}
