@@ -2,7 +2,7 @@
 
 A simple movies website where you can git all] information you need about your favourite movies like (rating, voting count, languages, budgets, status, overview, ...etc).
 
-You can definitely search for any movie you want and can also add (or remove) movies to (or from) your movies page   
+You can definitely search for any movie you want and can also add (or remove) movies to (or from) your favourite page   
 
 ## Pages
 
@@ -24,7 +24,7 @@ Search --> Where you can search for any movie you want and get instant feedback 
 - javaScript 
 - react 
 - redux 
-- ootstrap 
+- bootstrap 
 - axios 
 - JSX
 
