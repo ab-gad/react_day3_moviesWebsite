@@ -7,46 +7,52 @@ import { useDispatch } from "react-redux";
 import { getPopular } from "../redux/action";
 import { getTrend } from "../redux/action";
 import { getGenre } from "../redux/action";
+import { useContext } from "react";
+import { langContext } from "../context/langContext";
+
 
 function Home() {
-    //const [moviesGenre, setMoviesGenre] = useState([])
-
+    const {contextLang} = useContext(langContext);
     const moviesPopular = useSelector((state)=>state.movies.popular)
     const moviesTrend   = useSelector((state)=> state.movies.trend)
     const moviesGenre   = useSelector((state)=> state.movies.genre)
 
+    const araTranslation = {
+      title:"عالم الأفلام",
+      more: "المزيد من الأفلام الأكثر انتشارا",
+      occrdionTitle1:"الأكثر رواجا",
+      occrdionTitle2:"أحدث الأفلام"
+      
+    }
+    const enTranslation = {
+        title:" Movies Word",
+        more: "More Popular Movies",
+        occrdionTitle1:"Most Popular Movies",
+        occrdionTitle2:"Trending Movies"
+    }
+
+    const tanslation = contextLang === "EN" ? enTranslation : araTranslation
+
+
     const dispatch = useDispatch()
 
-    // function getConfigurations(){
-    //     axios.get('https://api.themoviedb.org/3/configuration?api_key=1c61f7854caf371b34a23ef611f0efed')
-    //         .then(res=>res.data)
-    //         .then(result=>{
-    //             //console.log("CONF.",result)
-    //             //console.log("state",moviesPopular)        
-    //         })
-    // }
-    //like ComponentDidMount
-
     useEffect(()=>{
-        //getConfigurations();
-        //getMoviesGenre();
         dispatch(getPopular());
         dispatch(getTrend());
         dispatch(getGenre())
-
     },[])
 
 
     return (
       <>
-        <Header title = "Movies World" />
+        <Header title = {tanslation.title} />
         <div className="accordion pb-5" id="accordionExample">
             <AccordionItem
                 favEdit="add"
                 fromFav={false}
                 movies = {moviesPopular} 
                 moviesGenre = {moviesGenre}
-                title="Most Popular Movies"
+                title={tanslation.occrdionTitle1}
                 hid = "headingOne"
                 btnView = "" 
                 ariaExpanded = "true"
@@ -57,14 +63,14 @@ function Home() {
                 ariaLabelledby="headingOne"
             />
            <div className="mb-4 text-center">
-               <Link className="btn btn-outline-primary" to="/movies/popular/1">More Popular Movies</Link>
+               <Link className="btn btn-outline-primary" to="/movies/popular/1">{tanslation.more}</Link>
            </div>
             <AccordionItem
                 favEdit="add" 
                 fromFav={false}
                 movies = {moviesTrend} 
                 moviesGenre = {moviesGenre}
-                title="Trending Movies"
+                title={tanslation.occrdionTitle2}
                 hId = "headingTwo"
                 btnView = "collapsed" //or nothing for the first
                 ariaExpanded ="false"  
