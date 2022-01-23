@@ -13,34 +13,11 @@ function Favourites() {
     const [movies, setMovies] = useState([])
     console.log("INtial",movies)
 
-    //const [isMovLoading, setMovLoading]= useState(true)
-
     const allMovies = []
-    const getfavMovies = () => {
-        fav.forEach((id) => {
-            axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=1c61f7854caf371b34a23ef611f0efed`)
-            .then(res=>res.data)
-                .then(result=>{
-                    console.log("AMOVIE",result)
-                    
-                    allMovies.push(result)
-                    console.log("ALL",allMovies)
-
-                    fav.indexOf(id) === fav.length - 1 && setMovies(allMovies)
-                })
-        })
-    }
     
     useEffect (()=>{
-        getfavMovies();
-        fav.length===0 && setMovies([])
+        fav.length===0 ? setMovies([]) : setMovies(fav)
     },[fav])
-
-    // useEffect(()=>{
-        
-    //     console.log("Loading",isMovLoading)
-    //     console.log("ALL",allMovies)
-    // },[isMovLoading])
 
     return(
         <>
@@ -48,7 +25,7 @@ function Favourites() {
             <div className="accordion pb-5" id="accordionExample">
                 <AccordionItem
                     favEdit="rm"
-                    fromFav={true}
+                    fromFav={false}
                     movies = {movies} 
                     moviesGenre = {[]}
                     title="Most Popular Movies"

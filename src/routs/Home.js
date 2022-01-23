@@ -5,6 +5,7 @@ import AccordionItem from "../components/AccordionItem";
 import Header from "../components/Header";
 
 function Home() {
+    
     const [moviesPopular, setMoviesPopular] = useState([])
     const [moviesGenre, setMoviesGenre] = useState([])
     const [moviesTrend, setMoviesTrend] = useState([])

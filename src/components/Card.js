@@ -26,7 +26,7 @@ function Card(props) {
                     <p>Release date: {release_date}</p>
                     <p> Rating:  {vote_average} <small>({vote_count})</small></p>
                     <Link className="btn btn-outline-dark" to={`/movie/${id}`}>More</Link>
-                    <AddToFav id={id} type={favEdit}/>
+                    <AddToFav movie={movie} type={favEdit}/>
                 </div>
             </div>
         </div>
